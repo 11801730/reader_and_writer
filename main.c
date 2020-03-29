@@ -7,7 +7,7 @@
 #include<unistd.h>
 
 pthread_mutex_t mutex, wrt;
-int s, rcount = 0,yps;
+int s, rcount = 0,yashu;
 void * writer(void * arg) {
   pthread_mutex_lock( & wrt);
 
