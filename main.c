@@ -17,10 +17,10 @@ void * writer(void * arg) {
   printf("_____________________________________________\n");
   printf("W%d Wait for Random time= %d\n", d, waittime);
   sleep(waittime);
-  printf("Enter the number of time W%d want to write:\n", d);
+  printf("Enter the no. of time W%d want to write:\n", d);
   int t;
   scanf("%d", & t);
-  printf("Now W%d is writing... i.e. ADDING...\n", d);
+  printf("Now W%d is writing...\n", d);
   int j;
   for (j = 0; j < t; j++) {
     printf("Enter the %dth value to write:\n", (j + 1));
@@ -28,7 +28,7 @@ void * writer(void * arg) {
     scanf("%d", & u);
     s = s + u;
   }
-  printf("UPDATED value of Shared variable = %d \n", s);
+  printf("UPDATED value of Shared variable to %d \n", s);
   printf("_____________________________________________\n");
   pthread_mutex_unlock( & wrt);
 }
@@ -44,17 +44,17 @@ void * reader(void * arg) {
   //Exit_code
   int waittime = rand() % 10;
   int d = ((int) arg);
-  printf("R%d wait for Random time= %d\n", d, waittime);
+  printf("R%d wait for Random time = %d\n", d, waittime);
   sleep(waittime);
-  printf("Enter the number of time R%d want to read:\n", d);
+  printf("Enter the no. of time R%d want to read:\n", d);
   int t;
   scanf("%d", & t);
-  printf("Now R%d is reading....\n", d);
+  printf("Now R%d is reading...\n", d);
   int j;
   for (j = 0; j < t; j++) {
     printf("R%d read the shared value = %d\n", d, s);
   }
-  printf("Number of Readers present = %d\n", rcount);
+  printf("No. of Readers present = %d\n", rcount);
   pthread_mutex_lock( & mutex);
   rcount--;
   if (rcount == 0) { //Now writer can come if they want
@@ -125,6 +125,6 @@ void main() {
       pthread_join(r[i], NULL);
     }
   }
-  printf("-------------After joining the thread---------\n");
+  printf("-------------After joining the threads---------\n");
   printf("Final value of share variable = %d\n", s);
 }
